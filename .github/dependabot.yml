@@ -1,5 +1,5 @@
 version: 2
-# Touching this file after the secret is present forces a fresh hosted check.
+# Touching this file forces a fresh hosted check after each repro change.
 registries:
   ruby-github:
     type: rubygems-server

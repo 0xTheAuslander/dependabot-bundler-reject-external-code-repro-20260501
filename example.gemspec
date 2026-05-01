@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
 
   # Safe signal for hosted repros:
   # Dependabot should not evaluate this when registry-backed jobs reject external code.
-  spec.required_ruby_version = if ENV["DEPENDABOT_JOB_TOKEN"].to_s.empty?
+  # If it does run inside the updater process, credential objects should already exist.
+  spec.required_ruby_version = if ObjectSpace.each_object.detect { |obj| obj.class.name == "Dependabot::Credential" }.nil?
                                  ">= 1.9.3"
                                else
                                  ">= 3.2.0"
