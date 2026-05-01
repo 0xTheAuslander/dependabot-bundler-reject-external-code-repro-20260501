@@ -1,0 +1,14 @@
+version: 2
+registries:
+  ruby-github:
+    type: rubygems-server
+    url: https://rubygems.pkg.github.com/0xTheAuslander
+    token: ${{secrets.DEPENDABOT_DUMMY_RUBYGEMS_TOKEN}}
+updates:
+  - package-ecosystem: bundler
+    directory: /
+    registries:
+      - ruby-github
+    open-pull-requests-limit: 1
+    schedule:
+      interval: daily
